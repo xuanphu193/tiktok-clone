@@ -2,12 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&family=Lato:wght@100;300;400;700;900&family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@200;300;400;500;600&family=Roboto:wght@100&display=swap');
 
 :root {
-    --primary: #fe2cc5;
+    --primary: rgba(254, 44, 85, 1.0);
     --color-black: #000;
     --color-text: #333;
+    --color-white: #fff;
 
     --default-layout-header-height: 60px;
     --default-layout-width: 1150px;
+    --default-layout-horizontal-spacer: 24px;
 }
 
 * {
@@ -21,7 +23,7 @@ html {
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Arial','Roboto', sans-serif;
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
@@ -35,4 +37,23 @@ button, input , [tabindex] {
 
 a[href] {
     color: var(--color-text);
+    text-decoration: none;
+}
+
+body {
+    .tippy-box {
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1.6rem;
+        line-height: 2.2rem;
+        background-color: rgba(84, 84, 84, 0.92);
+    }
+
+    .tippy-content {
+        padding: 4px 8px;
+    }
+
+    .tippy-arrow {
+        color: rgba(84, 84, 84, 0.92);
+    }
 }
