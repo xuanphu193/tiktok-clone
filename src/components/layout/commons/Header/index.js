@@ -10,7 +10,6 @@ import {
     faEarthAsia,
     faCircleQuestion,
     faKeyboard,
-    faCloudUpload,
     faUser,
     faCoins,
     faGear,
@@ -24,6 +23,8 @@ import images from '../../../../assets/img';
 import {Wrapper as PopperWrapper} from '../../../Popper'
 import AccountItem from '../../../AccountItem';
 import Menu from '../../../Popper/Menu';
+import { MessageBox, Messages, UploadIcon } from '../../../Icons';
+import Image from '../../../image';
 
 
 
@@ -138,8 +139,19 @@ function Header() {
                     isLogin ? (
                         <>
                             <Tippy content="Upload video" placement="bottom">
+                                <button className={cx('action-btn','action-btn--upload')} >
+                                    <UploadIcon />
+                                    <span className={cx('action-btn--title')}>Tai len</span>
+                                </button>
+                            </Tippy>
+                            <Tippy content="Messages" placement="bottom">
                                 <button className={cx('action-btn')} >
-                                    <FontAwesomeIcon icon={faCloudUpload}/>
+                                    <Messages />
+                                </button>
+                            </Tippy>
+                            <Tippy content="Message Box" placement="bottom">
+                                <button className={cx('action-btn')} >
+                                    <MessageBox />
                                 </button>
                             </Tippy>
                         </>
@@ -158,7 +170,10 @@ function Header() {
                     >
                         {
                             isLogin ? (
-                                <img src="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/ddcb57a7bcd8bf0fc01c18338b2caf59.jpeg?x-expires=1656925200&x-signature=UXby27hKj7QVISY1LbikTiBbOuE%3D" className={cx('user-avatar')} alt="Nguyen Van A" />
+                                <Image 
+                                src="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/ddcb57a7bcd8bf0fc01c18338b2caf59.jpeg?x-expires=1656925200&x-signature=UXby27hKj7QVISY1LbikTiBbOuE%3D" 
+                                className={cx('user-avatar')} 
+                                alt="Nguyen Van A" />
                             ) :
                             (
                                 <button className={cx('more-btn')}>
