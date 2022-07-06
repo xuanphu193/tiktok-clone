@@ -9,6 +9,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import HeadlessTippy from '@tippyjs/react/headless';
 import { SearchIcon, CircleXmarkIcon } from '../../../Icons';
+import { useDebounce } from '../../../../hooks';
+import * as searchService from '../../../../apiServices/searchServices';
 
 const cx = classNames.bind(styles)
 
@@ -20,24 +22,25 @@ function Search() {
 
     const inputSearch = useRef();
 
+    const debouned = useDebounce(searchValue, 500);
+
     useEffect(()=> {
-        if (!searchValue.trim()) {
+        if (!debouned.trim()) {
             setSearchResult([])
             return;
         }
-        setLoading(true);
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
-            .then(res => res.json())
-            .then(res => {
-                if (res.data) {
-                    setSearchResult(res.data)
-                    
-                }
-                setLoading(false);
-            }).catch(()=>{
-                setLoading(false);
-            })
-    }, [searchValue])
+
+        const fetchApi = async () => {
+            setLoading(true);
+
+            const results = await searchService.search(debouned);
+            setSearchResult(results);
+            setLoading(false);
+        }
+
+        fetchApi();
+        
+    }, [debouned])
 
     const handleClear = () => {
         setSearchValue('')
