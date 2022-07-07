@@ -42,7 +42,7 @@ function Menu({ children, items = [] , hideOnClick = false, onChange = defaultFn
                         {menu.length > 1  && <Header title={current.title} onBack={()=> {
                             setMenu(prev => prev.slice(0, -1))
                         }}/>}
-                        {renderItems()}
+                        <div className={cx('menu-body')}>{renderItems()}</div >
                     </PopperWrapper>
                 </div>
             )}
